@@ -1,4 +1,15 @@
+<!DOCTYPE html>
+<head>
+<title>Redirecting to Netlify</title>
 <script>
-    const gitUrl = window.top.location.hash.replace("#","")
-    window.top.location = `https://app.netlify.com/start/deploy?repository=${gitUrl}`
+    let gitUrl = window.top.location.hash.replace("#","")
+    if(gitUrl.endsWith("/")) gitUrl = gitUrl.slice(0,-1)
+
+    if(gitUrl && gitUrl.length > 1)
+        return window.top.location = `https://app.netlify.com/start/deploy?repository=${gitUrl}`
+    else 
+        return window.top.location = `https://github.com/netlify-run/netlify.run`
 </script>
+</head>
+<body></body>
+</html>
